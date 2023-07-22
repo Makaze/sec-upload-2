@@ -70,14 +70,14 @@ import '@aws-amplify/ui-react/styles.css';
 import { constants } from "http2";
 
 const region = "us-east-2";
-const bucket = "secuploads3210844-master";
+const bucket = "secuploadbucket185010-dev";
 
 const createPresignedUrlWithoutClient = async ({ region, bucket, key } : any) => {
   const url = parseUrl(`https://${bucket}.s3.${region}.amazonaws.com/${key}`);
   const presigner = new S3RequestPresigner({
     credentials: fromCognitoIdentityPool({
       clientConfig: { region: "us-east-2" },
-      identityPoolId: "us-east-2:9ec949d4-e874-4dfe-a430-c7605d194410",
+      identityPoolId: "us-east-2:56c262a6-bf9c-4ae5-bfa7-7c0e5fe91bd9",
     }),
     region,
     sha256: Hash.bind(null, "sha256"),
@@ -108,7 +108,7 @@ const createPresignedUrlWithClient = ({ region, bucket, key } : any) => {
     //
     credentials: fromCognitoIdentityPool({
       clientConfig: { region: "us-east-2" },
-      identityPoolId: "us-east-2:9ec949d4-e874-4dfe-a430-c7605d194410",
+      identityPoolId: "us-east-2:56c262a6-bf9c-4ae5-bfa7-7c0e5fe91bd9",
     }),
   });
   const command = new GetObjectCommand({ Bucket: bucket, Key: key });
@@ -145,7 +145,7 @@ export const DefaultStorageManagerExample = () => {
       //
       credentials: fromCognitoIdentityPool({
         clientConfig: { region: "us-east-2" },
-        identityPoolId: "us-east-2:9ec949d4-e874-4dfe-a430-c7605d194410",
+        identityPoolId: "us-east-2:56c262a6-bf9c-4ae5-bfa7-7c0e5fe91bd9",
       }),
     });
     const command = new ListObjectsCommand({
@@ -284,9 +284,10 @@ export const DefaultStorageManagerExample = () => {
           return asc ? a.Size - b.Size : b.Size - a.Size;
         break;
         case 'LastModified':
-          if (a.LastModified > b.LastModified) {
+          console.log(a.LastModified);
+          if (a.LastModified.getTime() > b.LastModified.getTime()) {
             return asc ? 1 : -1;
-          } else if (a.LastModified < b.LastModified) {
+          } else if (a.LastModified.getTime() < b.LastModified.getTime()) {
             return asc ? -1 : 1;
           } else {
             return 0;
@@ -296,6 +297,7 @@ export const DefaultStorageManagerExample = () => {
       return 0;
     });
 
+    setSortMethod(method);
     setUrls(tempUrls);
   };
 
@@ -318,8 +320,8 @@ export const DefaultStorageManagerExample = () => {
                 <tr>
                   <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm hover:text-blue-500 cursor-pointer" onClick={() => { sortUrls('Name'); }}>Name</th>
                   <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Link</th>
-                  <th className="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm hover:text-blue-500 cursor-pointer" onClick={() => { sortUrls('Name'); }}>Size</th>
-                  <th className="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm hover:text-blue-500 cursor-pointer" onClick={() => { sortUrls('Name'); }}>Modified</th>
+                  <th className="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm hover:text-blue-500 cursor-pointer" onClick={() => { sortUrls('Size'); }}>Size</th>
+                  <th className="w-1/6 text-left py-3 px-4 uppercase font-semibold text-sm hover:text-blue-500 cursor-pointer" onClick={() => { sortUrls('LastModified'); }}>Modified</th>
                 </tr>
               </thead>
               <tbody className="text-gray-700">
