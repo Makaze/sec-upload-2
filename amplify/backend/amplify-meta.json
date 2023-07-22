@@ -1,0 +1,111 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-secupload-dev-185010-authRole",
+      "UnauthRoleArn": "arn:aws:iam::089328070327:role/amplify-secupload-dev-185010-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::089328070327:role/amplify-secupload-dev-185010-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-secupload-dev-185010-deployment",
+      "UnauthRoleName": "amplify-secupload-dev-185010-unauthRole",
+      "StackName": "amplify-secupload-dev-185010",
+      "StackId": "arn:aws:cloudformation:us-east-2:089328070327:stack/amplify-secupload-dev-185010/1d4ed690-28e2-11ee-9a7d-065762061119",
+      "AmplifyAppId": "d31cet6qkff2id"
+    }
+  },
+  "auth": {
+    "secupload36a0f430": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-secupload-dev-185010-deployment/amplify-cfn-templates/auth/secupload36a0f430-cloudformation-template.json",
+        "logicalId": "authsecupload36a0f430"
+      },
+      "lastPushTimeStamp": "2023-07-22T22:57:24.625Z",
+      "output": {
+        "UserPoolId": "us-east-2_OC4hkDVq5",
+        "AppClientIDWeb": "kols7jnsa9r75mbctqupslfb8",
+        "AppClientID": "nftahk3oqva2s55f5ha8aqvoo",
+        "IdentityPoolId": "us-east-2:56c262a6-bf9c-4ae5-bfa7-7c0e5fe91bd9",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:089328070327:userpool/us-east-2_OC4hkDVq5",
+        "IdentityPoolName": "secupload36a0f430_identitypool_36a0f430__dev",
+        "UserPoolName": "secupload36a0f430_userpool_36a0f430"
+      },
+      "lastPushDirHash": "IMvsmFjtzB/IAvxgnHqJSnEgJ4k="
+    }
+  },
+  "function": {
+    "S3Trigger97ea2aca": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "lastBuildTimeStamp": "2023-07-22T22:55:21.725Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-07-22T22:55:21.751Z",
+      "distZipFilename": "S3Trigger97ea2aca-7a6c71476a39526f4d2f-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-secupload-dev-185010-deployment",
+        "s3Key": "amplify-builds/S3Trigger97ea2aca-7a6c71476a39526f4d2f-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-secupload-dev-185010-deployment/amplify-cfn-templates/function/S3Trigger97ea2aca-cloudformation-template.json",
+        "logicalId": "functionS3Trigger97ea2aca"
+      },
+      "lastPushTimeStamp": "2023-07-22T22:57:24.625Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::089328070327:role/S3Trigger97ea2acaLambdaRole97ea2aca-dev",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:089328070327:function:S3Trigger97ea2aca-dev",
+        "Name": "S3Trigger97ea2aca-dev",
+        "LambdaExecutionRole": "S3Trigger97ea2acaLambdaRole97ea2aca-dev"
+      },
+      "lastPushDirHash": "9ry/lvJPzRh49pKBlgx+VsrPfxA="
+    }
+  },
+  "storage": {
+    "secuploadbucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger97ea2aca",
+          "attributes": [
+            "Name",
+            "Arn",
+            "LambdaExecutionRole"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2023-07-22T22:57:24.625Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-secupload-dev-185010-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storagesecuploadbucket"
+      },
+      "output": {
+        "BucketName": "secuploadbucket185010-dev",
+        "Region": "us-east-2"
+      },
+      "lastPushDirHash": "843ldFFBYf427Uw4wvnUdTdmXi4="
+    }
+  }
+}

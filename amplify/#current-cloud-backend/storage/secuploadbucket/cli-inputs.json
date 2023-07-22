@@ -1,0 +1,15 @@
+{
+  "resourceName": "secuploadbucket",
+  "policyUUID": "55ee7d74",
+  "bucketName": "secuploadbucket",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "S3Trigger97ea2aca",
+  "groupAccess": {}
+}
