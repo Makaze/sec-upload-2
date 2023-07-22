@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-secupload-dev-185010-authRole",
+      "UnauthRoleArn": "arn:aws:iam::089328070327:role/amplify-secupload-dev-185010-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::089328070327:role/amplify-secupload-dev-185010-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-secupload-dev-185010-deployment",
+      "UnauthRoleName": "amplify-secupload-dev-185010-unauthRole",
+      "StackName": "amplify-secupload-dev-185010",
+      "StackId": "arn:aws:cloudformation:us-east-2:089328070327:stack/amplify-secupload-dev-185010/1d4ed690-28e2-11ee-9a7d-065762061119",
+      "AmplifyAppId": "d31cet6qkff2id"
+    },
+    "categories": {
+      "auth": {
+        "secupload36a0f430": {}
+      },
+      "function": {
+        "S3Trigger97ea2aca": {
+          "deploymentBucketName": "amplify-secupload-dev-185010-deployment",
+          "s3Key": "amplify-builds/S3Trigger97ea2aca-7a6c71476a39526f4d2f-build.zip"
+        }
+      },
+      "storage": {
+        "secuploadbucket": {}
+      }
+    }
+  }
+}
