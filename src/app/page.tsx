@@ -68,6 +68,7 @@ function formatUrl(request : any) {
 import { StorageManager } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
 import { constants } from "http2";
+import { JsxElement } from "typescript";
 
 const region = "us-east-2";
 const bucket = "secuploadbucket185010-dev";
@@ -115,7 +116,7 @@ const createPresignedUrlWithClient = ({ region, bucket, key } : any) => {
   return getSignedUrl(client, command, { expiresIn: 3600 });
 };
 
-export const DefaultStorageManagerExample = () => {
+function DefaultStorageManagerExample() {
   const [message, setMessage] = useState('');
 
   const [objects, setObjects] = useState<
